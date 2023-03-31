@@ -8,7 +8,11 @@ import wolframalpha
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice',voices[1].id)
-activationWord = 'computer' 
+activationWord = 'hello' 
+
+browser_path = r"C:\Users\Nischal\AppData\Local\Programs\Opera\opera.exe"
+webbrowser.register('opera', None, webbrowser.BackgroundBrowser(browser_path))
+
 
 def speak(text, rate = 120):
     engine.setProperty('rate',rate)
@@ -39,8 +43,6 @@ if __name__ ==  '__main__':
 
     while True:
         query = parseCommand().lower().split()
-        print('chaldaixa')
-
         if query[0] == activationWord:
             query.pop(0)
 
@@ -51,6 +53,10 @@ if __name__ ==  '__main__':
                     query.pop(0)
                     speech = ''.join(query)
                     speak(speech)
+            if query[0] == 'go' and query[1] == 'to':
+                speak('Opening...')
+                query = ' '.join(query[2:])
+                webbrowser.get('opera').open_new(query)
         
         else:
             speak('Unauthorized.')
