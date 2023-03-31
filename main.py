@@ -38,12 +38,12 @@ def parseCommand():
     return query
 
 if __name__ ==  '__main__':
-    speak('All system nominal.')
+    speak('System Ready.')
 
     while True:
         query = parseCommand().lower().split()
-        dqu = ''.join(query)
-        print('your query was : ' + query)
+        dqu = ' '.join(query[2:])
+        print('your query was : ' + dqu)
         if query[0] == activationWord:
             query.pop(0)
 
@@ -52,7 +52,7 @@ if __name__ ==  '__main__':
                     speak('Greetings')
                 else:
                     query.pop(0)
-                    speech = ''.join(query)
+                    speech = ' '.join(query)
                     speak(speech)
             if query[0] == 'go' and query[1] == 'to':
                 speak('Opening...')
