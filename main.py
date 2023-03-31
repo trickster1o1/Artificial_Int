@@ -30,7 +30,6 @@ def parseCommand():
     try:
         print('Reconizing speech...')
         query = listener.recognize_google(input_speech, language='en_gb')
-        print('The input speech was: {query}')
     except Exception as exception:
         print('I did not quite get what ur saying.')
         speak('I did not quite get wht you were saying')
@@ -43,6 +42,8 @@ if __name__ ==  '__main__':
 
     while True:
         query = parseCommand().lower().split()
+        dqu = ''.join(query)
+        print('your query was : ' + query)
         if query[0] == activationWord:
             query.pop(0)
 
