@@ -42,11 +42,14 @@ if __name__ ==  '__main__':
 
     while True:
         query = parseCommand().lower().split()
-        dqu = ' '.join(query[2:])
-        print('your query was : ' + dqu)
         if query[0] == activationWord:
             query.pop(0)
-
+            dqu = ' '.join(query[1:])
+            print('your query was : ' + dqu)
+            if query[0] == 'shutdown':
+                speak('Shutting Down')
+                exit()
+                break
             if query[0] == 'say':
                 if 'hello' in query:
                     speak('Greetings')
